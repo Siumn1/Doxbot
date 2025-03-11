@@ -1,6 +1,4 @@
-const dotenv = require('dotenv');
-dotenv.config();
-
+require('dotenv').config()
 const discord = require('discord.js');
 const { Client, GatewayIntentBits, REST, Routes, EmbedBuilder, MessageFlags } = discord;
 const axios = require('axios');
@@ -25,7 +23,7 @@ const commands = [
     },
 ];
 
-const rest = new REST().setToken('MTM0NzU2ODA3MzIyMTM0NTMxMA.GmZhmp.U0kRQ4GOsbyVqNtKg9yA2Yf_W9XLFw2GmWOH-I');
+const rest = new REST().setToken(process.env.BOT_TOKEN);
 
 const slashRegister = async () => {
     try {
@@ -47,7 +45,7 @@ const client = new Client({
     ],
 });
 
-client.login('MTM0NzU2ODA3MzIyMTM0NTMxMA.GmZhmp.U0kRQ4GOsbyVqNtKg9yA2Yf_W9XLFw2GmWOH-I').then(() => console.log('Бот включен'));
+client.login(process.env.BOT_TOKEN).then(() => console.log('Бот включен'));
 
 slashRegister();
 
